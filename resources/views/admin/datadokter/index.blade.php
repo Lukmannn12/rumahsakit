@@ -12,7 +12,7 @@
                     <div class="p-2">
                         <h1 class="text-xl font-bold mb-4">Manajemen Data User</h1>
 
-                        <a href="{{ route('datauser.create') }}"
+                        <a href="{{ route('datadokter.create') }}"
                             class="inline-block bg-green-500 text-sm text-white font-semibold px-4 py-2 rounded shadow transition">
                             + Tambah Data
                         </a>
@@ -34,14 +34,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                    @foreach ( $users as $user )
                                     <tr class="hover:bg-gray-50">
-                                    <td class="border p-2">{{ $user->id}}</td>
-                                        <td class="border p-2">{{ $user->name}}</td>
+                                    <td class="border p-2">{{ $user->id }}</td>
+                                        <td class="border p-2">{{ $user->name }}</td>
                                         <td class="border p-2">{{ $user->email }}</td>
                                         <td class="border p-2">{{ $user->role }}</td>
                                     </tr>
                                     @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>

@@ -15,8 +15,8 @@
                         <h1 class="text-xl font-bold mb-4">Tambah Pengguna</h1>
 
                         <!-- Form Input Data Pengguna -->
-                        <form action="" method="POST">
-                            
+                        <form action="{{ route('datadokter.store') }}" method="POST">
+                        @csrf
                             <!-- Name & Email in the same row -->
                             <div class="mb-4 flex gap-4">
                                 <div class="w-1/2">

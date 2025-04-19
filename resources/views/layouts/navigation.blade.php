@@ -16,11 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @if (auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('datauser.index')" :active="request()->routeIs('datauser')">
-                        {{ __('Data User') }}
+                    <x-nav-link :href="route('datadokter.index')" :active="request()->routeIs('datadokter.index')">
+                        {{ __('Data Dokter') }}
                     </x-nav-link>
                 </div>
+                 @endif
             </div>
 
             <!-- Settings Dropdown -->

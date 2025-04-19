@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -13,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('datauser.index', compact('users'));
+        $users = User::where('role', 'dokter')->get();
+        return view('admin.datadokter.index', compact('users') );
     }
 
     /**
@@ -22,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('datauser.create');
+        return view('admin.datadokter.create');
     }
 
     /**
@@ -30,7 +32,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+            'role' => 'required|in:admin,user,dokter',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Simpan data user ke database
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ]);
+
+        // Redirect ke halaman yang diinginkan, misalnya ke halaman daftar user
+        return redirect()->route('datadokter.index')->with('success', 'User berhasil ditambahkan.');
     }
 
     /**

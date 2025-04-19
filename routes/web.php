@@ -2,19 +2,25 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::get('/dokter/dashboard', function () {
+    return view('dokter.dashboard');
+})->middleware(['auth', 'verified'])->name('dokter.dashboard');
 
 
-Route::resource('datauser', UserController::class)
+Route::resource('datadokter', UserController::class)
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
