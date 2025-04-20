@@ -21,11 +21,6 @@
                         {{ __('Data Dokter') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('spesialisasi.index')" :active="request()->routeIs('spesialisasi.index')">
-                        {{ __('Data Spesialisasi') }}
-                    </x-nav-link>
-                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -90,7 +85,10 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link action="{{ route('profiledokter.index') }}">
+                <x-responsive-nav-link
+                    :href="Auth::user()->role === 'admin' 
+                        ? route('profile.edit') 
+                        : route('profiledokter.index')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
