@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Profile extends Model
 {
-
     use HasFactory;
     protected $fillable = [
-        'name',
         'specialization',
         'years_of_experience',
         'price',
@@ -19,7 +17,6 @@ class Staff extends Model
         'str_number',
         'gambar',
         'user_id',
-        'role',
     ];
 
 

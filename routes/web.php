@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dokter\DokterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,10 @@ Route::get('/dokter/dashboard', function () {
 
 
 Route::resource('datadokter', UserController::class)
+    ->middleware(['auth', 'verified']);
+
+
+Route::resource('profiledokter', DokterController::class)
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('staff', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('specialization');
             $table->integer('years_of_experience');
             $table->decimal('price', 8, 2);
@@ -22,7 +21,6 @@ return new class extends Migration
             $table->string('str_number');
             $table->string('gambar');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('role', ['dokter', 'staff']);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('profiles');
     }
 };
