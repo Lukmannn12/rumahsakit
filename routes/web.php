@@ -3,20 +3,19 @@
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dokter\DokterController;
+use App\Http\Controllers\Dokter\JadwalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\SpesialisasiController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/dokter/dashboard', function () {
-    return view('dokter.dashboard');
-})->middleware(['auth', 'verified'])->name('dokter.dashboard');
 
 
 Route::resource('datadokter', UserController::class)
@@ -28,7 +27,11 @@ Route::resource('spesialisasi', SpesialisasiController::class)
 
 Route::resource('profiledokter', DokterController::class)
     ->middleware(['auth', 'verified']);
-    
+
+Route::resource('reservasi', ReservasiController::class);
+
+Route::resource('dashboard/dokter', JadwalController::class)
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

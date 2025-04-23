@@ -28,4 +28,11 @@ class Profile extends Model
     {
         return $this->belongsTo(Spesialisasi::class, 'spesialis_id');
     }
+
+    public function reservasis()
+    {
+        return $this->hasMany(Reservasi::class);
+    }
+
+
 }

@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if ($user->role === 'admin') {
             return redirect()->route('dashboard');
         } elseif ($user->role === 'dokter') {
-            return redirect()->route('dokter.dashboard');
+            return redirect()->route('dokter.index');
         }
 
         // Default: pengguna biasa diarahkan ke halaman utama
