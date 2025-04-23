@@ -1,17 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dokter\DokterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpesialisasiController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

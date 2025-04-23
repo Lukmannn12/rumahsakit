@@ -82,7 +82,6 @@
                     </div>
 
                     @else
-                    {{-- Tampilkan tombol "Lengkapi Profil" --}}
                     {{-- Tampilkan notifikasi dan tombol --}}
                     <div class="text-center mt-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-6 rounded-xl shadow-sm">
                         <div class="flex flex-col items-center space-y-4">
