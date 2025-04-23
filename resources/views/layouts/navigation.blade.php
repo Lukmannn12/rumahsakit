@@ -11,6 +11,8 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @auth
+                @if (Auth::user()->role !== 'dokter')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -26,6 +28,9 @@
                         {{ __('Data Spesialisasi') }}
                     </x-nav-link>
                 </div>
+                @endif
+                @endauth
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -44,9 +49,12 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link action="{{ route('profiledokter.index') }}">
+                        <x-responsive-nav-link
+                            :href="Auth::user()->role === 'admin' 
+                        ? route('profile.edit') 
+                        : route('profiledokter.index')">
                             {{ __('Profile') }}
-                        </x-dropdown-link>
+                        </x-responsive-nav-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

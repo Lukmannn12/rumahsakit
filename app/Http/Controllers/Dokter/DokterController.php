@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dokter;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Spesialisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,9 @@ class DokterController extends Controller
     public function index()
     {
         $user = Auth::user();
-
-        // Pastikan datanya dipanggil berdasarkan user_id
-        $dokter = Profile::where('user_id', $user->id)->first();
+        $profile = $user->profile; // Ambil relasi profile dari user
     
-        return view('dokter.profile.index', compact('dokter'));
+        return view('dokter.profile.index', compact('user', 'profile'));
     }
 
     /**
@@ -27,7 +26,8 @@ class DokterController extends Controller
      */
     public function create()
     {
-        return view('dokter.profile.update');
+        $spesialisasis = Spesialisasi::all();
+        return view('dokter.profile.update', compact('spesialisasis'));
     }
 
     /**
@@ -37,7 +37,7 @@ class DokterController extends Controller
     {
         // Validasi input
         $request->validate([
-            'specialization' => 'required|string|max:255',
+            'spesialis_id' => 'required|exists:spesialisasis,id',
             'years_of_experience' => 'required|integer|min:0',
             'price' => 'required|string|max:255',
             'alumni' => 'required|string|max:255',
@@ -55,7 +55,7 @@ class DokterController extends Controller
         // Simpan data ke database
         Profile::create([
             'user_id' => Auth::id(),
-            'specialization' => $request->specialization,
+            'spesialis_id' => $request->spesialis_id,
             'years_of_experience' => $request->years_of_experience,
             'price' => $request->price,
             'alumni' => $request->alumni,
@@ -73,8 +73,8 @@ class DokterController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -31,71 +31,69 @@
                     <h3 class="text-2xl text-gray-800 font-semibold">{{ Auth::user()->name }}</h3>
                     <p class="text-gray-800 mb-4">{{ Auth::user()->email }}</p>
                 </div>
+
                 <!-- Profile Details -->
                 <div class="md:w-2/3 p-8 space-y-6">
-                    @if ($dokter && $dokter->specialization && $dokter->years_of_experience && $dokter->price && $dokter->alumni && $dokter->practice_location && $dokter->str_number)
+                    @if ($profile)
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-2xl shadow-md">
                         <div class="flex items-start gap-3">
                             <i class="fas fa-stethoscope text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">Spesialisasi</p>
-                                <p class="font-semibold text-gray-800">{{ $dokter->specialization }}</p>
+                                <p class="font-semibold text-gray-800">{{ $profile->spesialisasi->nama_spesialisasi ?? 'Tidak ada spesialisasi' }}</p>
                             </div>
+
                         </div>
                         <div class="flex items-start gap-3">
                             <i class="fas fa-calendar-alt text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">Pengalaman</p>
-                                <p class="font-semibold text-gray-800">{{ $dokter->years_of_experience }} tahun</p>
+                                <p class="font-semibold text-gray-800">{{ $profile->years_of_experience }} tahun</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <i class="fas fa-money-bill-wave text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">Biaya Konsultasi</p>
-                                <p class="font-semibold text-gray-800">Rp{{ number_format($dokter->price, 0, ',', '.') }}</p>
+                                <p class="font-semibold text-gray-800">Rp{{ number_format($profile->price, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <i class="fas fa-university text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">Alumni</p>
-                                <p class="font-semibold text-gray-800">{{ $dokter->alumni }}</p>
+                                <p class="font-semibold text-gray-800">{{ $profile->alumni }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">Lokasi Praktek</p>
-                                <p class="font-semibold text-gray-800">{{ $dokter->practice_location }}</p>
+                                <p class="font-semibold text-gray-800">{{ $profile->practice_location }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <i class="fas fa-id-card text-indigo-500 text-xl mt-1"></i>
                             <div>
                                 <p class="text-gray-600">No. STR</p>
-                                <p class="font-semibold text-gray-800">{{ $dokter->str_number }}</p>
+                                <p class="font-semibold text-gray-800">{{ $profile->str_number }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="text-center mt-8">
-                        <a href="{{ route('profile.edit') }}"
-                            class="inline-block px-6 py-2 bg-indigo-600 text-white font-medium rounded-full shadow-md hover:bg-indigo-700 transition duration-300">
-                            Edit Profile
-                        </a>
-                    </div>
-
                     @else
-                    <div class="bg-yellow-100 text-yellow-800 p-4 rounded-lg text-center">
-                        <p class="font-semibold">Data profil Anda belum lengkap.</p>
-                        <p>Silakan lengkapi data Anda agar profil terlihat sepenuhnya.</p>
-                    </div>
-                    <div class="text-center mt-10">
-                        <a href="{{ route('profiledokter.create') }}"
-                            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
-                            Lengkapi Data
-                        </a>
+                    {{-- Tampilkan tombol "Lengkapi Profil" --}}
+                    {{-- Tampilkan notifikasi dan tombol --}}
+                    <div class="text-center mt-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-6 rounded-xl shadow-sm">
+                        <div class="flex flex-col items-center space-y-4">
+                            <i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i>
+                            <p class="text-lg font-semibold">Profil Anda belum lengkap</p>
+                            <p class="text-sm text-gray-600">Silakan lengkapi profil Anda terlebih dahulu untuk menampilkan data dan memulai aktivitas sebagai dokter.</p>
+                            <a href="{{ route('profiledokter.create') }}"
+                                class="inline-block px-6 py-2 bg-indigo-600 text-white font-medium rounded-full shadow-md hover:bg-indigo-700 transition duration-300">
+                                Lengkapi Profil
+                            </a>
+                        </div>
                     </div>
                     @endif
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('specialization');
+            $table->foreignId('spesialis_id')->constrained('spesialisasis')->onDelete('cascade');
             $table->integer('years_of_experience');
             $table->decimal('price', 8, 2);
             $table->string('alumni');

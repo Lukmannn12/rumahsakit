@@ -9,7 +9,7 @@ class Profile extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'specialization',
+        'spesialis_id',
         'years_of_experience',
         'price',
         'alumni',
@@ -21,7 +21,11 @@ class Profile extends Model
 
 
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function spesialisasi()
+    {
+        return $this->belongsTo(Spesialisasi::class, 'spesialis_id');
+    }
 }

@@ -15,8 +15,15 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Specialization -->
                             <div>
-                                <label for="specialization" class="block text-sm font-medium text-gray-700">{{ __('Specialization') }}</label>
-                                <input type="text" name="specialization" id="specialization" value="{{ old('specialization') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <label for="spesialis_id" class="block text-sm font-medium text-gray-700">Spesialisasi</label>
+                                <select name="spesialis_id" id="spesialis_id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option value="">-- Pilih Spesialisasi --</option>
+                                    @foreach ($spesialisasis as $spesialis)
+                                    <option value="{{ $spesialis->id }}" {{ old('spesialis_id') == $spesialis->id ? 'selected' : '' }}>
+                                        {{ $spesialis->nama_spesialisasi }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <!-- Years of Experience -->
@@ -91,22 +98,22 @@
     </div>
 
     <script>
-    function previewImage(event) {
-        const input = event.target;
-        const preview = document.getElementById('preview');
-        const file = input.files[0];
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+            const file = input.files[0];
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+                preview.src = '';
             }
-            reader.readAsDataURL(file);
-        } else {
-            preview.style.display = 'none';
-            preview.src = '';
         }
-    }
-</script>
+    </script>
 </x-app-layout>
