@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\ReservasiController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dokter\DokterController;
 use App\Http\Controllers\Dokter\JadwalController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\SpesialisasiController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;

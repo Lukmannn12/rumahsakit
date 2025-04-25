@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
@@ -16,10 +17,6 @@ class ReservasiController extends Controller
         $reservasis = Reservasi::with('profile.user', 'profile.spesialisasi')->get();
         return view('admin.datareservasi.index', compact('reservasis'));
     }
-
-    
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +50,7 @@ class ReservasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reservasi $reservasi)
+    public function show(string $id)
     {
         //
     }
@@ -61,15 +58,19 @@ class ReservasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservasi $reservasi)
+    public function edit(string $id)
     {
-        //
+        // Ambil data reservasi berdasarkan ID
+    $reservasi = Reservasi::findOrFail($id);
+
+    // Tampilkan view edit dengan data reservasi
+    return view('reservasi.edit', compact('reservasi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reservasi $reservasi)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -77,7 +78,7 @@ class ReservasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservasi $reservasi)
+    public function destroy(string $id)
     {
         //
     }
