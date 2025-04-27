@@ -12,14 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('dashboard', [DashboardController::class, 'index'])
+Route::get('dashboard', [DashboardController::class, 'Count'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
-// Route::get('datadokter', [ProfileController::class, 'index'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('datadokter');
-
 
 
 Route::resource('datadokter', UserController::class)

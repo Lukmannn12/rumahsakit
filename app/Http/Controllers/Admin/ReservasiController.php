@@ -18,6 +18,12 @@ class ReservasiController extends Controller
         return view('admin.datareservasi.index', compact('reservasis'));
     }
 
+    // public function ReservasiCount()
+    // {
+    //     $ReservasiCount = Reservasi::count();
+    //     return view('admin.dashboard', compact('ReservasiCount'));
+    // }
+
     /**
      * Show the form for creating a new resource.
      */

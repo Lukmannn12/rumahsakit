@@ -13,7 +13,11 @@
             <!-- Kartu Jumlah Dokter -->
             <div class="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/50">
                 <h3 class="text-xl font-semibold text-gray-900">Jumlah Dokter</h3>
-                <p class="mt-2 text-2xl font-bold text-indigo-600">12</p>
+                <p class="mt-2 text-2xl font-bold text-indigo-600">{{ $dokterCount }}</p>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/50">
+                <h3 class="text-xl font-semibold text-gray-900">Jumlah Reservasi</h3>
+                <p class="mt-2 text-2xl font-bold text-indigo-600">{{ $reservasiCount }}</p>
             </div>
         </div>
                 </div>

@@ -14,11 +14,19 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $profiles = Profile::with(['spesialisasi','user'])->get();
 
-        return view('admin.datadokter.index', compact('profiles'));
+     public function index()
+     {
+         $profiles = Profile::with(['spesialisasi','user'])->get();
+     
+         return view('admin.datadokter.index', compact('profiles'));
+     }
+
+
+    public function countdokter()
+    {
+        $dokterCount=User::where('role','dokter')->count();
+        return view('admin.dashboard', compact('dokterCount'));
     }
 
     /**

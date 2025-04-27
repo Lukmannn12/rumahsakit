@@ -27,7 +27,7 @@
                             <table class="min-w-full table-auto border-collapse mt-4 text-sm text-center">
                                 <thead>
                                     <tr class="bg-gray-100">
-                                        <th class="border p-2">ID</th>
+                                        <th class="border p-2">No</th>
                                         <th class="border p-2">Nama</th>
                                         <th class="border p-2">Spesialis</th>
                                         <th class="border p-2">Pengalaman</th>
