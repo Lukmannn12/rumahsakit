@@ -16,6 +16,10 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Route::get('datadokter', [ProfileController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('datadokter');
+
 
 
 Route::resource('datadokter', UserController::class)

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="p-2">
-                        <h1 class="text-xl font-bold mb-4">Manajemen Data User</h1>
+                        <h1 class="text-xl font-bold mb-4">Manajemen Data Reservasi</h1>
 
                         <a href=""
                             class="inline-block bg-green-500 text-sm text-white font-semibold px-4 py-2 rounded shadow transition">
