@@ -7,28 +7,33 @@
     <title>Responsive Navbar with Tailwind</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-100 font-poppins">
+<body class="bg-[#F1F9FF] font-manrope">
 
-    <header class="bg-white shadow">
+    <header  class="py-2">
         <nav class="container mx-auto px-4 py-5 flex items-center justify-between">
             <!-- Brand -->
-            <div class="text-xl font-bold text-gray-800">MyWebsite</div>
+            <div class="text-2xl font-bold text-gray-800 tracking-wide">Healhty<span class="text-[#095D7E]">Me</span></div>
 
             <!-- Center Menu -->
-            <div class="hidden md:flex flex-1 justify-center">
-                <ul class="flex space-x-6 text-gray-700 text-sm">
-                    <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                    <li><a href="#" class="hover:text-blue-500">About</a></li>
-                    <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+            <div class="hidden md:flex flex-1 justify-start px-16">
+                <ul class="flex space-x-10 text-black text-sm font-medium">
+                    <li><a href="#" class="hover:text-blue-500">Layanan Dokter</a></li>
+                    <li><a href="#" class="hover:text-blue-500">Services</a></li>
+                    <li><a href="#" class="hover:text-blue-500">Review</a></li>
                 </ul>
             </div>
 
             <!-- Right Side: Login Button (Hidden on Mobile) -->
             <div class="hidden md:block">
-                <a href={{ route('login') }} class="bg-blue-500 text-white text-sm px-7 py-2 rounded hover:bg-blue-600 transition">Login</a>
+                <div class="gap-2">
+                <a href={{ route('register') }} class="bg-[#F1F9FF] text-[#095D7E] text-sm px-6 py-3 rounded hover:bg-[#095D7E] hover:text-white transition">Masuk</a>
+                <a href={{ route('login') }} class="bg-[#095D7E] text-white text-sm px-6 py-3 rounded hover:bg-[#F1F9FF] hover:text-[#095D7E] transition">Daftar</a>
+                </div>
             </div>
 
             <!-- Hamburger Button for Mobile -->
