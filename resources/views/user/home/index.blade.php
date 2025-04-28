@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @section('content')
-<section class="py-5 xl:px-2 px-2">
+<section class="py-5">
     <div class="container flex flex-col md:flex-row justify-center items-center py-1 xl:px-10">
         <div class="space-y-6">
             <h1 class="text-2xl xl:text-5xl lg:text-4xl md:text-3xl sm:text-xl font-bold tracking-wide xl:leading-snug">
@@ -24,15 +24,26 @@
 <section id="kategori spesialis">
     <div class="py-10">
         <div class="space-y-5">
-            <h1 class="font-bold text-3xl text-black">Konsultasi Spesialis Terpercaya</h1>
-            <div class="grid grid-cols-1 xl:grid-cols-3">
+            <h1 class="font-bold xl:text-3xl text-xl text-black">Konsultasi Spesialis Terpercaya</h1>
+            <div class="grid grid-cols-1 xl:grid-cols-3 py-5 gap-8">
                 <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-                    <span class="flex-grow text-center">Dokter Umum</span>
-                    <i class="fas fa-user-md ml-2"></i>
+                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
                 </button>
-                <button>wbdhdhb</button>
-                <button>wbjwb</button>
+                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
+                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
+                </button>
+                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
+                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
+                </button>
+                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
+                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
+                </button>
             </div>
+            <a href="" class="text-[#14967F] font-bold text-sm">Lihat Semua Spesialis</a>
             </div>
 
     </div>

@@ -16,6 +16,10 @@ Route::get('dashboard', [DashboardController::class, 'Count'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+    Route::get('/layanan', function () {
+        return view('user.layanan.index');
+    });
+
 
 Route::resource('datadokter', UserController::class)
     ->middleware(['auth', 'verified']);
