@@ -7,7 +7,11 @@
     <!-- Center Menu -->
     <div class="hidden md:flex flex-1 justify-start px-16">
         <ul class="flex space-x-10 text-black text-sm font-medium">
-            <li><a href="/layanan" class="hover:text-blue-500">Layanan Dokter</a></li>
+            <li>
+                <a href="/layanan" class="{{ request()->is('layanan') ? 'text-blue-500 font-bold' : 'hover:text-blue-500' }}">
+                    Layanan Dokter
+                </a>
+            </li>
             <li><a href="#" class="hover:text-blue-500">Services</a></li>
             <li><a href="#" class="hover:text-blue-500">Review</a></li>
         </ul>

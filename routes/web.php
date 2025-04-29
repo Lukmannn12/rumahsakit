@@ -20,6 +20,10 @@ Route::get('dashboard', [DashboardController::class, 'Count'])
         return view('user.layanan.index');
     });
 
+    Route::get('/chatdokter', function () {
+        return view('user.chatdokter.index');
+    });
+
 
 Route::resource('datadokter', UserController::class)
     ->middleware(['auth', 'verified']);
