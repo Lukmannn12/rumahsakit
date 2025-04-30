@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\Spesialisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,19 +32,19 @@ class SpesialisasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_spesialisasi'=> 'required|string|max:255',
+            'nama_spesialisasi' => 'required|string|max:255',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-            $gambarPath = null;
-            if ($request->hasFile('gambar')) {
-                $gambarPath = $request->file('gambar')->store('spesialisasi', 'public');
-            }
-            Spesialisasi::create([
-                'user_id' => Auth::id(),
-                'nama_spesialisasi' => $request->nama_spesialisasi,
-                'gambar' => $gambarPath,
-            ]);
+        $gambarPath = null;
+        if ($request->hasFile('gambar')) {
+            $gambarPath = $request->file('gambar')->store('spesialisasi', 'public');
+        }
+        Spesialisasi::create([
+            'user_id' => Auth::id(),
+            'nama_spesialisasi' => $request->nama_spesialisasi,
+            'gambar' => $gambarPath,
+        ]);
 
         return redirect()->route('spesialisasi.index')->with('success', 'Data Berhasil');
     }
@@ -53,7 +54,14 @@ class SpesialisasiController extends Controller
      */
     public function show(Spesialisasi $spesialisasi)
     {
-        //
+        $dokters = Profile::with('user')
+            ->where('spesialis_id', $spesialisasi->id)
+            ->get();
+
+        return view('user.chatdokter.index', [
+            'profiledokter' => $dokters,
+            'spesialisasi' => $spesialisasi,
+        ]);
     }
 
     /**

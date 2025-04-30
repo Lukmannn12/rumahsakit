@@ -26,24 +26,14 @@
         <div class="space-y-5">
             <h1 class="font-bold xl:text-3xl text-xl text-black">Konsultasi Spesialis Terpercaya</h1>
             <div class="grid grid-cols-1 xl:grid-cols-3 py-5 gap-8">
+                @foreach ( $spesialis as $spesialisasi )
                 <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">{{ $spesialisasi->nama_spesialisasi  }}</span>
                     <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
                 </button>
-                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-                </button>
-                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-                </button>
-                <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-                    <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-                    <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-                </button>
+                @endforeach
             </div>
-            <a href="" class="text-[#14967F] font-bold text-sm">Lihat Semua Spesialis</a>
+            <a href="/layanan" class="text-[#14967F] font-bold text-sm">Lihat Semua Spesialis</a>
             </div>
 
     </div>

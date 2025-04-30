@@ -49,38 +49,15 @@
         <p class="text-[#14967F] font-bold text-sm pt-5">Pilih kategori yang tersedia sesuai kondisimu</p>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4  xl:grid-cols-5 py-5 gap-8">
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
+        @foreach ($spesialis as $spesialisasi)
+        <a href="{{ route('spesialisasi.show', $spesialisasi->id) }}"
+            class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
+            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">
+                {{ $spesialisasi->nama_spesialisasi }}
+            </span>
             <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
-        <button class="border border-[#095D7E] rounded-md flex items-center justify-between w-full py-2 px-3">
-            <span class="flex-grow text-center text-[#095D7E] font-bold text-sm">Dokter Umum</span>
-            <i class="fas fa-user-md ml-2 text-[#095D7E]"></i>
-        </button>
+        </a>
+        @endforeach
     </div>
 </section>
 

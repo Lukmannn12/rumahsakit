@@ -4,18 +4,27 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Spesialisasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+
     public function index()
     {
-        $dokter = Profile::all();
-        return view('user.home.index', compact('dokter'));
+        $spesialis = Spesialisasi::all();
+        return view('user.home.index', compact('spesialis'));
     }
+
+    public function layanan()
+    {
+        $spesialis = Spesialisasi::all();
+        return view('user.layanan.index', compact('spesialis'));
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

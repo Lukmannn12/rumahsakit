@@ -19,11 +19,27 @@
 
     <!-- Right Side: Login Button (Hidden on Mobile) -->
     <div class="hidden md:block">
-        <div class="gap-2">
-            <a href={{ route('register') }} class="bg-[#F1F9FF] text-[#095D7E] text-sm px-6 py-3 rounded hover:bg-[#095D7E] hover:text-white transition">Masuk</a>
-            <a href={{ route('login') }} class="bg-[#095D7E] text-white text-sm px-6 py-3 rounded hover:bg-[#F1F9FF] hover:text-[#095D7E] transition">Daftar</a>
-        </div>
+    <div class="gap-2">
+        @guest
+            <a href="{{ route('login') }}" class="bg-[#F1F9FF] text-[#095D7E] text-sm px-6 py-3 rounded hover:bg-[#095D7E] hover:text-white transition">Masuk</a>
+            <a href="{{ route('register') }}" class="bg-[#095D7E] text-white text-sm px-6 py-3 rounded hover:bg-[#F1F9FF] hover:text-[#095D7E] transition">Daftar</a>
+        @endguest
+
+        @auth
+            <div class="flex items-center gap-4">
+                <span class="text-[#095D7E] text-sm">Hello, {{ Auth::user()->name }}</span>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="bg-red-500 text-white text-sm px-6 py-3 rounded hover:bg-red-600 transition">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        @endauth
     </div>
+</div>
+
 
     <!-- Hamburger Button for Mobile -->
     <div class="md:hidden">

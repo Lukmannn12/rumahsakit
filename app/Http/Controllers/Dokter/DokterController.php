@@ -21,6 +21,13 @@ class DokterController extends Controller
         return view('dokter.profile.index', compact('user', 'profile'));
     }
 
+    public function listdokter()
+    {
+        $profiledokter = Profile::with('spesialisasi','user')->get();
+
+        return view('user.chatdokter.index', compact('profiledokter'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
