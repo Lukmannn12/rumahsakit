@@ -31,6 +31,8 @@ Route::resource('profiledokter', DokterController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('reservasi', ReservasiController::class);
+Route::get('/dashboard/datareservasi', [ReservasiController::class, 'dataresevasi'])->name('reservasi.datareservasi');
+
 
 Route::resource('dashboard/dokter', JadwalController::class)
     ->middleware(['auth', 'verified']);

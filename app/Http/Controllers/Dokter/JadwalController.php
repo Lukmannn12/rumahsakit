@@ -12,21 +12,15 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        // Ambil profil user yang sedang login
         $profile = Profile::where('user_id', Auth::id())->first();
 
-        // Inisialisasi array reservasi
-        $reservasis = [];
-
-        // Jika profil ditemukan, ambil data reservasi yang terkait dengan profil
+        $jumlahUserReservasi = 0;
+    
         if ($profile) {
-            $reservasis = Reservasi::with('profile.user', 'profile.spesialisasi')
-                ->where('profile_id', $profile->id)
-                ->get();
+            $jumlahUserReservasi = Reservasi::where('profile_id', $profile->id)->count();
         }
-
-        // Kirim data reservasis ke view
-        return view('dokter.dashboard', compact('reservasis'));
+    
+        return view('dokter.dashboard', compact('jumlahUserReservasi'));
     }
 
     /**

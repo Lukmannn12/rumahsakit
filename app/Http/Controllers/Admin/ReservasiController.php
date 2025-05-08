@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservasiController extends Controller
 {
@@ -28,11 +29,10 @@ class ReservasiController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
-    {
-        {
+    { {
             $profileId = $request->query('profile_id');
             $profile = Profile::findOrFail($profileId);
-        
+
             return view('user.reservasi.create', compact('profile'));
         }
     }
@@ -47,10 +47,10 @@ class ReservasiController extends Controller
             'profile_id' => 'required|exists:profiles,id',
             'reservation_date' => 'required|date',
         ]);
-    
+
         Reservasi::create($validated);
-    
-        return redirect()->route('home')->with('success', 'Reservasi berhasil dibuat!');
+
+        return back()->with('success', 'Reservasi berhasil dibuat!');
     }
 
     /**
@@ -67,10 +67,10 @@ class ReservasiController extends Controller
     public function edit(string $id)
     {
         // Ambil data reservasi berdasarkan ID
-    $reservasi = Reservasi::findOrFail($id);
+        $reservasi = Reservasi::findOrFail($id);
 
-    // Tampilkan view edit dengan data reservasi
-    return view('reservasi.edit', compact('reservasi'));
+        // Tampilkan view edit dengan data reservasi
+        return view('reservasi.edit', compact('reservasi'));
     }
 
     /**
@@ -87,5 +87,22 @@ class ReservasiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function dataresevasi()
+    {
+
+        $profile = Profile::where('user_id', Auth::id())->first();
+
+        // Inisialisasi array reservasi
+        $reservasis = [];
+
+        // Jika profil ditemukan, ambil data reservasi yang terkait dengan profil
+        if ($profile) {
+            $reservasis = Reservasi::with('profile.user', 'profile.spesialisasi')
+                ->where('profile_id', $profile->id)
+                ->get();
+        }
+        return view('dokter.datareservasi.index', compact('reservasis'));
     }
 }

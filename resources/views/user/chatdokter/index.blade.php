@@ -1,6 +1,17 @@
 @extends('user.layouts.app')
 
 @section('content')
+@if(session('success'))
+<div 
+    x-data="{ show: true }" 
+    x-init="setTimeout(() => show = false, 3000)" 
+    x-show="show" 
+    x-transition 
+    class="fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow-lg z-50"
+>
+    {{ session('success') }}
+</div>
+@endif
 
 <div>
     <h1 class="font-bold text-3xl tracking-wider ">
@@ -35,15 +46,11 @@
                         Rp{{ number_format($dokter->price, 0, ',', '.') }}
                     </h1>
                 </div>
-                <div class="flex justify-end">
-                    <a href="#" class="bg-[#095D7E] text-white px-10 py-1 rounded-md hover:bg-[#07445c] transition-all">
-                        Chat
-                    </a>
-                </div>
+                @include('components.modalform')
             </div>
         </div>
         @empty
-            <p class="text-gray-500">Tidak ada dokter tersedia untuk spesialisasi ini.</p>
+        <p class="text-gray-500">Tidak ada dokter tersedia untuk spesialisasi ini.</p>
         @endforelse
     </div>
 
