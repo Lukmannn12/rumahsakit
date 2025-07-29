@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
+             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->after('id');
             $table->dateTime('reservation_date');
             $table->timestamps();
         });

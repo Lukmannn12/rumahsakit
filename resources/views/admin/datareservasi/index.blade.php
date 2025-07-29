@@ -12,13 +12,9 @@
                     <div class="p-2">
                         <h1 class="text-xl font-bold mb-4">Manajemen Data Reservasi</h1>
 
-                        <a href=""
-                            class="inline-block bg-green-500 text-sm text-white font-semibold px-4 py-2 rounded shadow transition">
-                            + Tambah Data
-                        </a>
-
                         @if (session()->has('message'))
-                        <div id="alert" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg opacity-0 transform translate-y-[-10px] transition-all duration-500 z-50">
+                        <div id="alert"
+                            class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg opacity-0 transform translate-y-[-10px] transition-all duration-500 z-50">
                             {{ session('message') }}
                         </div>
                         @endif
@@ -28,22 +24,26 @@
                                 <thead>
                                     <tr class="bg-gray-100">
                                         <th class="border p-2">No</th>
-                                        <th class="border p-2">Name</th>
+                                        <th class="border p-2">Nama User</th>
+                                        <th class="border p-2">Nama Dokter</th>
                                         <th class="border p-2">Spesialis</th>
                                         <th class="border p-2">Tanggal Reservasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $reservasis as $reservasi )
+                                    @foreach ($reservasis as $index => $reservasi)
                                     <tr class="hover:bg-gray-50">
-                                        <td class="border p-2">{{ $reservasi->id }}</td>
-                                        <td class="border p-2">{{ $reservasi->name }}</td>
-                                        <td class="border p-2">{{ $reservasi->profile->spesialisasi->nama_spesialisasi ?? '-' }}</td>
-                                        <td class="border p-2">{{ $reservasi->reservation_date }}</td>
+                                        <td class="border p-2">{{ $index + 1 }}</td>
+                                        <td class="border p-2">{{ $reservasi->user->name ?? '-' }}</td>
+                                        <td class="border p-2">{{ $reservasi->profile->user->name ?? '-' }}</td>
+                                        <td class="border p-2">{{ $reservasi->profile->spesialisasi->nama_spesialisasi
+                                            ?? '-' }}</td>
+                                        <td class="border p-2">
+                                            {{ \Carbon\Carbon::parse($reservasi->reservation_date)->translatedFormat('d
+                                            F Y') }}
+                                        </td>
                                     </tr>
                                     @endforeach
-                              
-                                    
                                 </tbody>
                             </table>
                         </div>

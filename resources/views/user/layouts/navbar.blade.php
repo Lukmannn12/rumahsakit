@@ -12,8 +12,7 @@
                     Layanan Dokter
                 </a>
             </li>
-            <li><a href="#" class="hover:text-blue-500">Services</a></li>
-            <li><a href="#" class="hover:text-blue-500">Review</a></li>
+            <li><a href="{{ route('reservasi.history') }}" class="hover:text-blue-500">Riwayat Reservasi</a></li>
         </ul>
     </div>
 

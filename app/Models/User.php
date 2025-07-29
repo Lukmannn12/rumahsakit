@@ -59,4 +59,9 @@ class User extends Authenticatable
         return $this->hasOne(Spesialisasi::class);
     }
 
+    public function reservasi()
+    {
+        return $this->hasMany(Reservasi::class);
+    }
+
 }

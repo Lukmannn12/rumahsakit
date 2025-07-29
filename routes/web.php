@@ -19,6 +19,9 @@ Route::get('dashboard', [DashboardController::class, 'Count'])
 Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
 
 Route::get('/chatdokter', [DokterController::class, 'listdokter'])->name('listdokter');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reservasi/history', [ReservasiController::class, 'historyUser'])->name('reservasi.history');
+});
 
 Route::resource('datadokter', UserController::class)
     ->middleware(['auth', 'verified']);

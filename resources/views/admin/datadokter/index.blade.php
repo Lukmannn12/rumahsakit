@@ -44,7 +44,7 @@
                                         <th class="border p-2">{{ $profile->user->name }}</th>
                                         <td class="border p-2">{{ $profile->spesialisasi->nama_spesialisasi }}</td>
                                         <td class="border p-2">{{ $profile->years_of_experience }} Tahun</td>
-                                        <td class="border p-2">{{ $profile->price }}</td>
+                                        <td class="border p-2">Rp {{ $profile->price }}</td>
                                         <td class="border p-2">{{ $profile->practice_location }}</td>
                                         <td class="border p-2">{{ $profile->alumni }}</td>
                                         <td class="border p-2">
